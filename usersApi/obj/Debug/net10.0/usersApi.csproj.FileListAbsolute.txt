@@ -32,3 +32,5 @@ C:\Users\zoli\Desktop\2025_2026\CSharpOktav\Tan2\Apis\usersApi\usersApi\obj\Debu
 C:\Users\zoli\Desktop\2025_2026\CSharpOktav\Tan2\Apis\usersApi\usersApi\obj\Debug\net10.0\usersApi.pdb
 C:\Users\zoli\Desktop\2025_2026\CSharpOktav\Tan2\Apis\usersApi\usersApi\obj\Debug\net10.0\usersApi.genruntimeconfig.cache
 C:\Users\zoli\Desktop\2025_2026\CSharpOktav\Tan2\Apis\usersApi\usersApi\obj\Debug\net10.0\ref\usersApi.dll
+C:\Users\zoli\Desktop\2025_2026\CSharpOktav\Tan2\Apis\usersApi\usersApi\bin\Debug\net10.0\MySqlConnector.dll
+C:\Users\zoli\Desktop\2025_2026\CSharpOktav\Tan2\Apis\usersApi\usersApi\obj\Debug\net10.0\usersApi.sourcelink.json

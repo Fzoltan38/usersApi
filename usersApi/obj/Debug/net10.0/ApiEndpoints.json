@@ -74,7 +74,39 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
+    "Parameters": [
+      {
+        "Name": "users",
+        "Type": "usersApi.Models.Users",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "usersApi.Controllers.UserSqlController",
+    "Method": "GetAllUser",
+    "RelativePath": "users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "usersApi.Controllers.UserSqlController",
+    "Method": "DeleteUser",
+    "RelativePath": "users",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   }
 ]
