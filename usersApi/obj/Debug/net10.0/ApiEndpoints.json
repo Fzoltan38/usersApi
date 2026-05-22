@@ -108,5 +108,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "usersApi.Controllers.UserSqlController",
+    "Method": "UpdateUser",
+    "RelativePath": "users",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "users",
+        "Type": "usersApi.Models.Users",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

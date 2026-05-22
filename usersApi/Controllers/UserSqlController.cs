@@ -113,5 +113,48 @@ namespace usersApi.Controllers
                 return StatusCode(400, new { message = ex.Message });
             }
         }
+
+        [HttpPut]
+        public ActionResult UpdateUser(int id, [FromBody] Users users)
+        {
+            try
+            {
+                var user = new Users
+                {
+                    UserName = users.UserName,
+                    Email = users.Email,
+                    Password = users.Password
+                };
+
+                conn.MySqlConnection.Open();
+
+                string sql = $"UPDATE `users` SET `username`= @username,`email`=@email,`password`= @password WHERE `id` = @id;";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn.MySqlConnection);
+
+                cmd.Parameters.AddWithValue("@username", user.UserName);
+                cmd.Parameters.AddWithValue("@email", user.Email);
+                cmd.Parameters.AddWithValue("@password", user.Password);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                if(id == 0)
+                {
+                    return StatusCode(404, new { message = "Nincs ily Id!" });
+                }
+                cmd.ExecuteNonQuery();
+
+                conn.MySqlConnection.Close();
+
+                return StatusCode(201, new { message = "Sikeres módosítás!" });
+
+
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, new { message = ex.Message });
+            }
+
+        }
     }
 }
