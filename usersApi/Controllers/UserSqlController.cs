@@ -20,7 +20,8 @@ namespace usersApi.Controllers
                 {
                     UserName = users.UserName,
                     Email = users.Email,
-                    Password = users.Password
+                    Password = users.Password,
+                    CreatedTime = DateTime.Now
                 };
 
                 conn.MySqlConnection.Open();
@@ -72,8 +73,11 @@ namespace usersApi.Controllers
                         Id = dr.GetInt32(0),
                         UserName = dr.GetString("username"),
                         Email = dr.GetString("email"),
-                        Password = dr.GetString("password")
-                       
+                        Password = dr.GetString("password"),
+                        CreatedTime = dr["createdtime"] == DBNull.Value ? null : dr.GetDateTime("createdtime"),
+                        UpdatedTime = dr["updatedtime"] == DBNull.Value ? null : dr.GetDateTime("updatedtime")
+
+
                     };
 
                     users.Add(user);
@@ -123,23 +127,26 @@ namespace usersApi.Controllers
                 {
                     UserName = users.UserName,
                     Email = users.Email,
-                    Password = users.Password
+                    Password = users.Password,
+                    UpdatedTime = DateTime.Now
+                    
                 };
 
                 conn.MySqlConnection.Open();
 
-                string sql = $"UPDATE `users` SET `username`= @username,`email`=@email,`password`= @password WHERE `id` = @id;";
+                string sql = $"UPDATE `users` SET `username`= @username,`email`=@email,`password`= @password, `updatedtime` = @updatedime WHERE `id` = @id;";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn.MySqlConnection);
 
                 cmd.Parameters.AddWithValue("@username", user.UserName);
                 cmd.Parameters.AddWithValue("@email", user.Email);
                 cmd.Parameters.AddWithValue("@password", user.Password);
+                cmd.Parameters.AddWithValue("@updatedime", user.UpdatedTime);
                 cmd.Parameters.AddWithValue("@id", id);
 
                 if(id == 0)
                 {
-                    return StatusCode(404, new { message = "Nincs ily Id!" });
+                    return StatusCode(404, new { message = "Nincs ilyen Id!" });
                 }
                 cmd.ExecuteNonQuery();
 
